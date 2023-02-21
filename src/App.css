@@ -1,0 +1,15 @@
+.app-page {
+  height: 100vh;
+}
+
+.art-item:nth-child(odd) {
+  background-color: beige;
+}
+
+.img-fluid-h {
+  max-height: 200px;
+}
+
+.art-works {
+  height: calc(100% - 8rem);
+}
