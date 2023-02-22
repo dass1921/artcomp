@@ -27,7 +27,6 @@ function ArtWorks(props) {
   };
 
   const handleScroll = (e) => {
-    console.log(e);
     if (
       !loading &&
       Math.abs(
@@ -47,8 +46,6 @@ function ArtWorks(props) {
   }, []);
 
   const documentHeight = () => {
-    console.log(height);
-    console.log(window.innerHeight - 80);
     setHeight(window.innerHeight - 80);
   };
 
