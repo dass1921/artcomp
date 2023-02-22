@@ -16,7 +16,7 @@ export const MongoContextProvider = ({ children }) => {
   }, []);
 
   return (
-    <MongoContext.Provider value={{ id: APP_ID }}>
+    <MongoContext.Provider value={{ id: APP_ID, user }}>
       {children}
     </MongoContext.Provider>
   );

@@ -30,7 +30,6 @@ const config = {
         test: /\.(js|jsx)$/i,
         loader: "babel-loader",
       },
-      { test: /\.json$/, loaders: ["json-loader"] },
       {
         test: /\.css$/i,
         use: [stylesHandler, "css-loader"],
