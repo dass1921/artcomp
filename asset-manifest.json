@@ -1,19 +1,19 @@
 {
   "files": {
     "main.css": "/artcomp/static/css/main.e06038f8.css",
-    "main.js": "/artcomp/static/js/main.82137e0b.js",
-    "static/js/418.7c93545c.chunk.js": "/artcomp/static/js/418.7c93545c.chunk.js",
+    "main.js": "/artcomp/static/js/main.d8f518b1.js",
+    "static/js/418.fded34a5.chunk.js": "/artcomp/static/js/418.fded34a5.chunk.js",
     "static/js/651.482511ee.chunk.js": "/artcomp/static/js/651.482511ee.chunk.js",
-    "static/js/449.b69c41a5.chunk.js": "/artcomp/static/js/449.b69c41a5.chunk.js",
+    "static/js/737.0110983d.chunk.js": "/artcomp/static/js/737.0110983d.chunk.js",
     "index.html": "/artcomp/index.html",
     "main.e06038f8.css.map": "/artcomp/static/css/main.e06038f8.css.map",
-    "main.82137e0b.js.map": "/artcomp/static/js/main.82137e0b.js.map",
-    "418.7c93545c.chunk.js.map": "/artcomp/static/js/418.7c93545c.chunk.js.map",
+    "main.d8f518b1.js.map": "/artcomp/static/js/main.d8f518b1.js.map",
+    "418.fded34a5.chunk.js.map": "/artcomp/static/js/418.fded34a5.chunk.js.map",
     "651.482511ee.chunk.js.map": "/artcomp/static/js/651.482511ee.chunk.js.map",
-    "449.b69c41a5.chunk.js.map": "/artcomp/static/js/449.b69c41a5.chunk.js.map"
+    "737.0110983d.chunk.js.map": "/artcomp/static/js/737.0110983d.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.e06038f8.css",
-    "static/js/main.82137e0b.js"
+    "static/js/main.d8f518b1.js"
   ]
 }
