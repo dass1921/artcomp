@@ -1,20 +1,24 @@
 {
   "files": {
-    "main.css": "/artcomp/static/css/main.d07c3440.css",
-    "main.js": "/artcomp/static/js/main.dc4403f4.js",
-    "static/js/418.560588d8.chunk.js": "/artcomp/static/js/418.560588d8.chunk.js",
+    "main.css": "/artcomp/static/css/main.ea22cb14.css",
+    "main.js": "/artcomp/static/js/main.d8fa04d2.js",
+    "static/js/418.2eb847d1.chunk.js": "/artcomp/static/js/418.2eb847d1.chunk.js",
+    "static/js/670.a665198d.chunk.js": "/artcomp/static/js/670.a665198d.chunk.js",
     "static/js/651.482511ee.chunk.js": "/artcomp/static/js/651.482511ee.chunk.js",
-    "static/js/449.0a7d3b25.chunk.js": "/artcomp/static/js/449.0a7d3b25.chunk.js",
+    "static/js/124.4abd3eb0.chunk.js": "/artcomp/static/js/124.4abd3eb0.chunk.js",
+    "static/js/121.38a4f5f9.chunk.js": "/artcomp/static/js/121.38a4f5f9.chunk.js",
     "static/media/logo.svg": "/artcomp/static/media/logo.cb962403aaf5ab5c94350f2cadf0ae1a.svg",
     "index.html": "/artcomp/index.html",
-    "main.d07c3440.css.map": "/artcomp/static/css/main.d07c3440.css.map",
-    "main.dc4403f4.js.map": "/artcomp/static/js/main.dc4403f4.js.map",
-    "418.560588d8.chunk.js.map": "/artcomp/static/js/418.560588d8.chunk.js.map",
+    "main.ea22cb14.css.map": "/artcomp/static/css/main.ea22cb14.css.map",
+    "main.d8fa04d2.js.map": "/artcomp/static/js/main.d8fa04d2.js.map",
+    "418.2eb847d1.chunk.js.map": "/artcomp/static/js/418.2eb847d1.chunk.js.map",
+    "670.a665198d.chunk.js.map": "/artcomp/static/js/670.a665198d.chunk.js.map",
     "651.482511ee.chunk.js.map": "/artcomp/static/js/651.482511ee.chunk.js.map",
-    "449.0a7d3b25.chunk.js.map": "/artcomp/static/js/449.0a7d3b25.chunk.js.map"
+    "124.4abd3eb0.chunk.js.map": "/artcomp/static/js/124.4abd3eb0.chunk.js.map",
+    "121.38a4f5f9.chunk.js.map": "/artcomp/static/js/121.38a4f5f9.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.d07c3440.css",
-    "static/js/main.dc4403f4.js"
+    "static/css/main.ea22cb14.css",
+    "static/js/main.d8fa04d2.js"
   ]
 }
