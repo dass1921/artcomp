@@ -13,23 +13,27 @@ body {
 }
 
 
+.cursor-pointer {
+  cursor: pointer;
+}
+
 
 /* Works on Firefox */
-* {
+.thin-scroll {
   scrollbar-width: thin;
   scrollbar-color: beige;
 }
 
 /* Works on Chrome, Edge, and Safari */
-*::-webkit-scrollbar {
+.thin-scroll::-webkit-scrollbar {
   width: 6px;
 }
 
-*::-webkit-scrollbar-track {
+.thin-scroll::-webkit-scrollbar-track {
   background: transparent;
 }
 
-*::-webkit-scrollbar-thumb {
+.thin-scroll::-webkit-scrollbar-thumb {
   background-color: beige;
   border-radius: 5px;
 }

@@ -1,69 +1,122 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Col, Row, Spinner } from "react-bootstrap";
-import * as Realm from "realm-web";
 import { MongoContext } from "../context/mongo-context";
+import LoginForm from "./login-form";
 const ArtItem = React.lazy(() => import("./art-item"));
+const FilterPanel = React.lazy(() => import("./filter-panel"));
 
 function ArtWorks(props) {
   const [artWorks, setArtWorks] = useState([]);
-  const [height, setHeight] = useState(window.innerHeight - 80);
   const [loading, setLoading] = useState(true);
+  const [hasNextPage, setHasNextPage] = useState(true);
   const [page, setPage] = useState(0);
-  const { id: APP_ID } = useContext(MongoContext);
-  const app = Realm.App.getApp(APP_ID);
+  const {
+    user,
+    addToImageMap,
+    filters,
+    email,
+    password,
+    setEmail,
+    setPassword,
+    onSubmit,
+  } = useContext(MongoContext);
 
   const getArtWorks = (page) => {
-    setLoading(true);
-    try {
-      app.logIn(Realm.Credentials.anonymous()).then((user) => {
-        user.functions.fetchByPage(page).then((resp) => {
-          setLoading(false);
-          setArtWorks([...artWorks, ...resp.result]);
-        });
-      });
-    } catch (error) {
-      console.error(error);
+    const andw = [];
+    filters.forEach((value, key) => {
+      if (value.length > 0) {
+        andw.push({ [key]: { $in: value } });
+      }
+    });
+    const queryObj = {
+      $and: andw,
+    };
+
+    if (user) {
+      setLoading(true);
+      try {
+        user.functions
+          .fetchByPage("", page, andw.length ? queryObj : {})
+          .then((resp) => {
+            const result = resp?.result.map((x) => {
+              return { ...x, _id: x._id.toString() };
+            });
+            if (result.length < 10) {
+              setHasNextPage(false);
+            }
+            setLoading(false);
+            if (page > 0) {
+              setArtWorks([...artWorks, ...result]);
+            } else {
+              setArtWorks([...result]);
+            }
+            result.forEach((artwork) => {
+              addToImageMap(artwork._id, artwork);
+            });
+          });
+      } catch (error) {
+        console.error(error);
+      }
     }
   };
 
   const handleScroll = (e) => {
     if (
+      hasNextPage &&
+      user &&
       !loading &&
       Math.abs(
         e.target.scrollHeight - e.target.scrollTop - e.target.clientHeight
-      ) < 1
+      ) < 2
     ) {
       setPage(page + 1);
       getArtWorks(page + 1);
-      console.log(loading, page + 1);
+      console.log("Page No ", page + 1);
     }
   };
 
   useEffect(() => {
     getArtWorks(page);
-    window.addEventListener("resize", documentHeight);
-    documentHeight();
-  }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [user]);
 
-  const documentHeight = () => {
-    setHeight(window.innerHeight - 80);
-  };
+  useEffect(() => {
+    setPage(0);
+    setHasNextPage(true);
+    setArtWorks([]);
+    getArtWorks(page);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [filters]);
 
-  return (
-    <Col
-      className="overflow-auto bg-dark art-works p-4"
-      onScroll={handleScroll}
-      style={{ height }}
-    >
-      {artWorks.map((element) => (
-        <ArtItem key={element._id} {...element} />
-      ))}
-      {loading ? (
-        <Row className="justify-content-center">
-          <Spinner animation="border" variant="light" />
-        </Row>
-      ) : null}
-    </Col>
+  return !user ? (
+    <LoginForm
+      onEmailChange={(e) => setEmail(e.target.value)}
+      email={email}
+      onPassWordChange={(e) => setPassword(e.target.value)}
+      password={password}
+      onSubmit={onSubmit}
+    />
+  ) : (
+    <>
+      <Col xs={12} md={3}>
+        <FilterPanel />
+      </Col>
+      <Col
+        xs={12}
+        md={9}
+        className="overflow-auto bg-dark art-works thin-scroll p-4"
+        onScroll={handleScroll}
+      >
+        {artWorks.map((element) => (
+          <ArtItem key={element._id} {...element} />
+        ))}
+        {loading ? (
+          <Row className="justify-content-center">
+            <Spinner animation="border" variant="light" />
+          </Row>
+        ) : null}
+      </Col>
+    </>
   );
 }
 
