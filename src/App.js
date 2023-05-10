@@ -11,6 +11,7 @@ import { MongoContextProvider } from "./context/mongo-context";
 import logo from "./logo.svg";
 
 function App() {
+  // Initiate mongo connection
   const mongoRealm = useMemo(
     () => new Realm.App({ id: process.env.REACT_APP_REALM_APP_ID }),
     []

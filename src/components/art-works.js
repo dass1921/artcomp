@@ -72,7 +72,6 @@ function ArtWorks(props) {
     ) {
       setPage(page + 1);
       getArtWorks(page + 1);
-      console.log("Page No ", page + 1);
     }
   };
 

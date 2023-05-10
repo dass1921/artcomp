@@ -11,7 +11,6 @@ function FilterPanel(props) {
       key,
       value.map((v) => v.value)
     );
-    console.log(copy);
     setFilters(copy);
   };
   return (
@@ -21,7 +20,6 @@ function FilterPanel(props) {
           isMulti
           filterKey="artist_name"
           label="Artists"
-          // fallBack={ARTISTS.map((v) => ({ value: v, label: v }))}
           onChange={(v) => onChangeFilters("artist_name", v)}
         />
       </Col>
@@ -31,7 +29,6 @@ function FilterPanel(props) {
           filterKey="category"
           label="Art Category"
           onChange={(v) => onChangeFilters("category", v)}
-          // fallBack={CATEGORY.map((v) => ({ value: v, label: v }))}
         />
       </Col>
       <Col xs={12} className="mb-3">
@@ -103,8 +100,7 @@ function FilterBox(props) {
         .catch((err) => {
           console.log(err);
           setLoading(false);
-        })
-        .finally((x) => console.log(x));
+        });
     }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps

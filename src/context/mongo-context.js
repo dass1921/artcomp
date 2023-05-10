@@ -29,7 +29,6 @@ export const MongoContextProvider = ({ children, app: mongoRealm }) => {
 
       u.functions.isUserAdmin().then((d) => {
         setIsAnon(!d.result?.name || d.result.name == null);
-        console.log(d.result.name);
         setIsAdmin(d.result.role === "admin");
       });
       setUser(u);
