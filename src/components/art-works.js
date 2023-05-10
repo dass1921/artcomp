@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Col, Row, Spinner } from "react-bootstrap";
 import { MongoContext } from "../context/mongo-context";
+import FilterPill from "./filter-pill";
 import LoginForm from "./login-form";
 const ArtItem = React.lazy(() => import("./art-item"));
 const FilterPanel = React.lazy(() => import("./filter-panel"));
@@ -98,6 +99,11 @@ function ArtWorks(props) {
     />
   ) : (
     <>
+      <Col xs={12}>
+        {filters?.get("_id")?.map((x) => (
+          <FilterPill value={x} k="_id" />
+        ))}
+      </Col>
       <Col xs={12} md={3}>
         <FilterPanel />
       </Col>

@@ -1,6 +1,5 @@
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
 import { useContext, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
@@ -12,7 +11,7 @@ import ImageMeta from "./image-meta";
 const rows = 3;
 function ArtItem(props) {
   const { user, isAdmin } = useContext(MongoContext);
-  console.log(props);
+
   const [hiddenItems, setHiddenItems] = useState(new Set());
   const onDelete = (n) => {
     const copy = new Set(hiddenItems).add(n);

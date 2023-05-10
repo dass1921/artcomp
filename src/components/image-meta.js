@@ -14,16 +14,22 @@ function ImageMeta(props) {
   const [art, setArt] = useState({});
   const [dateYear, setDateYear] = useState("");
 
-  const { user, getImageData, addToImageMap } = useContext(MongoContext);
+  const { user, getImageData, addToImageMap, filters, setFilters } =
+    useContext(MongoContext);
+
+  const onImageClick = (value) => {
+    let copy = new Map(filters);
+    copy.set("_id", [value]);
+    setFilters(copy);
+  };
 
   useEffect(() => {
     const a = getImageData(props.sid);
-    console.log(a);
     if (!a) {
       setLoading(true);
       user.functions.fetchByID(props.sid).then((resp) => {
         if (resp.result) {
-          addToImageMap(props.sid, resp.result[0]);
+          addToImageMap(props.sid.toString(), resp.result[0]);
           setArt(resp.result[0]);
           setDateYear(resp.result[0]?.auction_date?.getFullYear());
 
@@ -42,26 +48,12 @@ function ImageMeta(props) {
 
   return art ? (
     <>
-      {/* <ReactImageMagnify
-        {...{
-          smallImage: {
-            alt: art.title,
-            isFluidWidth: true,
-            src: art.image_url,
-          },
-          largeImage: {
-            src: art.image_url,
-            width: 1200,
-            height: 1800,
-          },
-        }}
-        enlargedImagePosition="over"
-      /> */}
       <Image
         fluid
         src={art.image_url}
         alt={art.title}
         className="w-100 cursor-pointer"
+        onClick={() => onImageClick(art._id)}
       />
       <div className="px-1 pb-1">
         <Figure.Caption title="Art Title">
